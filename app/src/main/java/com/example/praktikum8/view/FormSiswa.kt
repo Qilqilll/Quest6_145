@@ -58,7 +58,7 @@ fun FormSiswa(
             )
         }
     ){ isiRuang ->
-        Column(modifier = Modifier.padding(paddingValues = isiRuang),
+        Column(modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
@@ -82,10 +82,12 @@ fun FormSiswa(
                         item->
                     Row(verticalAlignment = Alignment.CenterVertically){
                         RadioButton(
-                            selected = false,
-                            onClick = {item}
+                            selected = txtGender== item,
+                            onClick = {
+                                txtGender=item
+                            }
                         )
-                        Text(text = item)
+                        Text(item)
                     }
 
                 }
