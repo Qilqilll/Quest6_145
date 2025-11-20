@@ -10,4 +10,11 @@ fun TampilSiswa(
     // edit 1 : parameter statusUiSiswa
     statusUiSiswa: Siswa,
     onBackButtonClicked:() -> Unit
-)
+){
+
+    // edit 2 : items Pair
+    val items = listOf(
+        Pair(first = stringResource(id = R.string.nama),   second = statusUiSiswa.nama),
+        Pair(first = stringResource(id = R.string.gender), second = statusUiSiswa.gender),
+        Pair(first = stringResource(id = R.string.alamat), second = statusUiSiswa.alamat)
+    )
