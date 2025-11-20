@@ -24,3 +24,53 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.praktikum8.R
 import com.example.praktikum8.model.Siswa
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TampilSiswa(
+    statusUiSiswa: Siswa,
+    onBackButtonClicked: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val items = listOf(
+        Pair(stringResource(id = R.string.nama), statusUiSiswa.nama),
+        Pair(stringResource(id = R.string.gender), statusUiSiswa.gender),
+        Pair(stringResource(id = R.string.alamat), statusUiSiswa.alamat)
+    )
+
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = stringResource(id = R.string.detail), color = Color.White)
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = colorResource(id = R.color.purple_500)
+                )
+            )
+        }
+    ) { isiRuang ->
+        Column(
+            modifier = Modifier
+                .padding(isiRuang)
+                .fillMaxSize()
+                .background(Color.White) // <-- INI FIX NYA: Paksa background putih
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items.forEach { item ->
+                Column {
+                    Text(
+                        text = item.first.uppercase(), // Label uppercase biar mirip foto
+                        color = Color.Gray // Warna label abu-abu
+                    )
+                    Text(
+                        text = item.second,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black // Warna isi data HITAM PEKAT
+                    )
+                    Divider(modifier = Modifier.padding(top = 8.dp))
+                }
+            }
