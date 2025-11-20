@@ -113,3 +113,11 @@ fun FormSiswa(
                     onSubmitButtonClicked(listData)
                 }
             ) {
+                Text(text = stringResource(id = R.string.submit))
+            }
+
+        }
+
+    }
+
+}
